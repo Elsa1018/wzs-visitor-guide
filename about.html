@@ -17,6 +17,7 @@
     --card: #FFFFFF;
     --border: #EAECEF;
     --shadow: 0 1px 8px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.07);
     --radius: 14px;
     --radius-sm: 10px;
   }
@@ -31,7 +32,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  .page { max-width: 480px; margin: 0 auto; padding-bottom: 40px; }
+  .page { max-width: 480px; margin: 0 auto; padding-bottom: 50px; }
 
   /* ========== SUB-PAGE HEADER ========== */
   .sub-header {
@@ -41,24 +42,13 @@
     overflow: hidden;
   }
 
-  .sub-header::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    right: -30px;
-    width: 130px; height: 130px;
-    border-radius: 50%;
-    opacity: 0.04;
-    border: 2px solid #fff;
-  }
-
   .sub-header::after {
     content: '';
     position: absolute;
-    bottom: -30px; left: -20px;
-    width: 100px; height: 100px;
+    top: -60px; right: -40px;
+    width: 150px; height: 150px;
     border-radius: 50%;
-    opacity: 0.04;
+    opacity: 0.05;
     border: 2px solid #fff;
   }
 
@@ -73,12 +63,11 @@
     position: relative;
     z-index: 1;
   }
-
   .back-btn:active { opacity: 0.7; }
 
   .sub-header-icon {
-    font-size: 34px;
-    margin-bottom: 8px;
+    font-size: 36px;
+    margin-bottom: 6px;
     position: relative;
     z-index: 1;
     display: block;
@@ -105,6 +94,24 @@
     padding: 24px 20px 0;
   }
 
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+  }
+  .section-title .s-icon {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+
   .card {
     background: var(--card);
     border-radius: var(--radius);
@@ -126,64 +133,216 @@
   .card p {
     font-size: 14px;
     color: var(--text-medium);
-    line-height: 1.7;
+    line-height: 1.8;
     margin-bottom: 6px;
   }
   .card p:last-child { margin-bottom: 0; }
 
-  /* ========== HIGHLIGHT CARD ========== */
-  .highlight-card {
-    background: linear-gradient(135deg, #EDF4FC 0%, #DCE8F6 100%);
+  /* ========== 使命/愿景 高亮卡片 ========== */
+  .mv-row {
+    display: flex;
+    gap: 12px;
+  }
+  .mv-card {
+    flex: 1;
+    min-width: 0;
     border-radius: var(--radius);
-    padding: 22px 20px;
-    box-shadow: var(--shadow);
-    margin-bottom: 14px;
+    padding: 18px 14px;
     text-align: center;
-    border: 1px solid rgba(27,109,200,0.1);
+    box-shadow: var(--shadow);
+  }
+  .mv-card.mission {
+    background: linear-gradient(135deg, #EBF2FC 0%, #D4E4F7 100%);
+    border: 1px solid rgba(27,109,200,0.12);
+  }
+  .mv-card.vision {
+    background: linear-gradient(135deg, #EEF1F5 0%, #DFE4EA 100%);
+    border: 1px solid rgba(15,68,120,0.08);
+  }
+  .mv-card .mv-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .mv-card .mv-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .mv-card .mv-desc {
+    font-size: 12px;
+    color: var(--text-medium);
+    line-height: 1.5;
   }
 
-  .highlight-card .hl-val {
-    font-size: 28px;
-    font-weight: 700;
+  /* ========== 业务覆盖 ========== */
+  .region-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .region-tag {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--primary-light);
     color: var(--primary);
+  }
+  .region-tag.highlight {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  /* ========== TIMELINE 时间轴 ========== */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary) 60%, #D4E4F7 100%);
+    border-radius: 1px;
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-bottom: 4px;
+  }
+  .tl-item:last-child { margin-bottom: 0; }
+
+  .tl-dot {
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 3px solid var(--primary-light);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tl-dot::after {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+  .tl-content {
+    background: var(--card);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .tl-content::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 16px;
+    width: 12px; height: 12px;
+    background: var(--card);
+    transform: rotate(45deg);
+    box-shadow: -1px 1px 3px rgba(0,0,0,0.03);
+  }
+
+  .tl-year {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .tl-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
     margin-bottom: 4px;
   }
 
-  .highlight-card .hl-label {
+  .tl-desc {
     font-size: 13px;
-    color: #5A7DA0;
-    font-weight: 500;
+    color: var(--text-medium);
+    line-height: 1.6;
   }
 
-  /* ========== VALUE LIST ========== */
-  .value-list {
-    list-style: none;
-    padding: 0;
+  /* ========== 价值观 ========== */
+  .value-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
+  .value-item {
+    background: var(--card);
+    border-radius: var(--radius-sm);
+    padding: 18px 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s;
+  }
+  .value-item:active { transform: scale(0.96); }
 
-  .value-list li {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
+  .value-item .val-icon {
+    width: 44px; height: 44px;
+    margin: 0 auto 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    color: var(--text-medium);
+    justify-content: center;
+    font-size: 20px;
   }
+  .val-icon.c1 { background: #EBF2FC; color: var(--primary); }
+  .val-icon.c2 { background: #E8F5F0; color: #2E8B57; }
+  .val-icon.c3 { background: #FFF3E8; color: #E67E22; }
+  .val-icon.c4 { background: #F3E8FF; color: #7B3FBE; }
+  .val-icon.c5 { background: #E8F2FF; color: #3B7DD8; }
 
-  .value-list li:last-child { border-bottom: none; }
-
-  .value-list .v-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--primary);
-    flex-shrink: 0;
+  .value-item .val-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .value-item .val-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
   }
 
   .text-bold { font-weight: 600; }
   .text-primary { color: var(--primary); }
   .mt-8 { margin-top: 8px; }
+  .mt-12 { margin-top: 12px; }
   .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+
+  /* ========== FOOTER LINK ========== */
+  .footer-link {
+    text-align: center;
+    margin-top: 28px;
+    padding-bottom: 10px;
+  }
+  .footer-link a {
+    display: inline-flex;
+    align-items: center; gap: 6px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
@@ -197,78 +356,179 @@
     <p class="sub-subtitle">微智盛科技 · 助力中国小家电品牌出海</p>
   </div>
 
-  <!-- ==================== 基本概况 ==================== -->
   <div class="content-section">
+
+    <!-- ==================== 一、关于我们 ==================== -->
+    <div class="section-title">
+      <div class="s-icon">📖</div>
+      关于我们
+    </div>
+
     <div class="card">
-      <h3>📌 企业概况</h3>
       <p>
-        <span class="text-bold">微智盛科技</span>（WZS / Teendow）是一家位于中国深圳的跨境电商企业，规模 <span class="text-primary text-bold">180-200 人</span>，专注小家电出海赛道。
-      </p>
-      <p class="mt-8">
-        公司扎根粤港澳大湾区核心地带，办公地点位于<span class="text-bold">深圳市龙岗区坂田街道雅宝路8号星河双子塔·东塔34楼整层</span>，坐拥一线城市景观。
+        <span class="text-bold">微智盛科技</span>（<span class="text-primary text-bold">国家级高新技术企业</span>）成立于 2015 年，深耕智能小家电出海赛道，依托国内完备的供应链体系与全球化数字营销能力，持续为全球家庭提供<span class="text-bold">智慧清洁、餐厨料理、环境调控</span>三大类智能产品。
       </p>
     </div>
 
-    <!-- ==================== 使命愿景 ==================== -->
-    <div class="highlight-card">
-      <div class="hl-val">助力中国小家电品牌出海</div>
-      <div class="hl-label">企业使命</div>
+    <!-- 使命 & 愿景 -->
+    <div class="mv-row">
+      <div class="mv-card mission">
+        <div class="mv-icon">🚀</div>
+        <div class="mv-title">核心使命</div>
+        <div class="mv-desc">助力中国小家电品牌出海</div>
+      </div>
+      <div class="mv-card vision">
+        <div class="mv-icon">🌟</div>
+        <div class="mv-title">企业愿景</div>
+        <div class="mv-desc">成为每个家庭的智慧伙伴</div>
+      </div>
     </div>
 
-    <div class="highlight-card" style="background:linear-gradient(135deg,#F0F3F7 0%,#E5EAEF 100%);border-color:rgba(15,68,120,0.08);">
-      <div class="hl-val" style="color:var(--primary-deeper);">成为每个家庭的智慧伙伴</div>
-      <div class="hl-label" style="color:#6B7B8D;">企业愿景</div>
-    </div>
-
-    <!-- ==================== 资质荣誉 ==================== -->
+    <!-- 业务覆盖 -->
     <div class="card">
-      <h3>🏆 资质荣誉</h3>
-      <p>微智盛科技已获评 <span class="text-bold text-primary">国家高新技术企业</span>，在跨境电商与小家电出海领域持续深耕，凭借技术创新与供应链优势，将优质国货小家电带到全球消费者手中。</p>
+      <h3>🌍 业务覆盖</h3>
+      <p>以<span class="text-bold">北美</span>为核心，辐射欧洲、日韩、俄罗斯等数十个国家及地区。</p>
+      <div class="region-tags mt-12">
+        <span class="region-tag highlight">北美</span>
+        <span class="region-tag">欧洲</span>
+        <span class="region-tag">日本</span>
+        <span class="region-tag">韩国</span>
+        <span class="region-tag">俄罗斯</span>
+        <span class="region-tag">多国覆盖</span>
+      </div>
     </div>
 
-    <!-- ==================== 价值观 ==================== -->
-    <div class="card">
-      <h3>💎 核心价值观</h3>
-      <ul class="value-list">
-        <li>
-          <span class="v-dot"></span>
-          <span><span class="text-bold">客户导向</span> — 以客户需求为中心，持续创造价值</span>
-        </li>
-        <li>
-          <span class="v-dot"></span>
-          <span><span class="text-bold">求真理</span> — 基于数据与事实，追求真实洞察</span>
-        </li>
-        <li>
-          <span class="v-dot"></span>
-          <span><span class="text-bold">务实创新</span> — 脚踏实地，敢于突破边界</span>
-        </li>
-        <li>
-          <span class="v-dot"></span>
-          <span><span class="text-bold">开放包容</span> — 多元视角，协作共赢</span>
-        </li>
-        <li>
-          <span class="v-dot"></span>
-          <span><span class="text-bold">共同成长</span> — 与员工、伙伴、客户携手前行</span>
-        </li>
-      </ul>
+    <!-- ==================== 二、发展历程 ==================== -->
+    <div class="section-title mt-24">
+      <div class="s-icon">📈</div>
+      发展历程
     </div>
 
-    <!-- ==================== 发展历程 ==================== -->
-    <div class="card">
-      <h3>📈 发展历程</h3>
-      <p>
-        微智盛科技自成立以来，深耕跨境电商小家电领域，依托中国制造业的供应链优势与品牌运营能力，在亚马逊等全球电商平台上持续打造自有品牌矩阵，将高品质的中国小家电产品带入全球千万家庭。
-      </p>
-      <p class="mt-8">
-        未来，公司将继续以"助力中国小家电品牌出海"为使命，拓展更多国际市场，用科技与品质定义智慧家居生活。
-      </p>
+    <div class="card" style="padding:20px 16px;">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-year">2015</span>
+            <div class="tl-title">公司成立</div>
+            <div class="tl-desc">初始团队组建，主攻电子消费品类外销业务，市场以北美市场为主，年销售额超 500 万。</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-year">2017</span>
+            <div class="tl-title">规模跨越式增长</div>
+            <div class="tl-desc">团队规模扩充至 30 余人，跻身区域消费电子头部行列，年度营收冲破 2 亿元。</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-year">2018</span>
+            <div class="tl-title">业务版图拓展</div>
+            <div class="tl-desc">团队规模突破百人，产品重心转向智能清洁赛道，布局多平台数字化营销网络，开拓欧洲、日本海外市场，全年营收攀升至 3 亿元。</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-year">2021</span>
+            <div class="tl-title">战略研发升级</div>
+            <div class="tl-desc">锚定智能清洁产业供应链深度布局，专项组建自研技术团队，启动扫地机器人核心产品自主研发项目。</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-year">2022</span>
+            <div class="tl-title">技术赋能品牌跃升</div>
+            <div class="tl-desc">加码核心技术研发，构筑专利技术竞争壁垒，搭建多元化品牌体系，企业年度营收突破 7 亿元。</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-year">2023</span>
+            <div class="tl-title">市场份额稳居前列</div>
+            <div class="tl-desc">深耕北美线上主流渠道，旗下扫地机器人产品稳居亚马逊平台品类市占率第二位，全年营收突破 10 亿元。</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-year">2024</span>
+            <div class="tl-title">全球化渠道布局</div>
+            <div class="tl-desc">成立 DTC 独立品牌事业部，推进全球化多渠道协同发展，聚焦用户精细化运营，全面深化自有品牌价值塑造。</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-year">2025</span>
+            <div class="tl-title">生态化战略转型</div>
+            <div class="tl-desc">组建专业软件研发团队，企业正式从单品渠道销售模式，向智能家居物联生态平台方向进阶升级。</div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div style="text-align:center; margin-top:24px;">
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--primary);text-decoration:none;font-size:14px;font-weight:500;">
-        ← 返回来访指引首页
-      </a>
+    <!-- ==================== 三、我们的价值观 ==================== -->
+    <div class="section-title mt-24">
+      <div class="s-icon">💎</div>
+      我们的价值观
     </div>
+
+    <p style="font-size:13px;color:var(--text-medium);margin-bottom:14px;padding:0 4px;">
+      在合作中，我们始终秉持以下原则，愿与您同频共振：
+    </p>
+
+    <div class="value-grid">
+      <div class="value-item">
+        <div class="val-icon c1">🎯</div>
+        <div class="val-title">客户导向</div>
+        <div class="val-desc">洞察真实需求，以体验为标尺</div>
+      </div>
+
+      <div class="value-item">
+        <div class="val-icon c2">🔍</div>
+        <div class="val-title">求真理</div>
+        <div class="val-desc">直面问题本质，以数据与事实决策</div>
+      </div>
+
+      <div class="value-item">
+        <div class="val-icon c3">⚡</div>
+        <div class="val-title">务实创新</div>
+        <div class="val-desc">行动破局，迭代驱动增长</div>
+      </div>
+
+      <div class="value-item">
+        <div class="val-icon c4">🤝</div>
+        <div class="val-title">开放包容</div>
+        <div class="val-desc">拥抱多元差异，鼓励碰撞协作</div>
+      </div>
+
+      <div class="value-item" style="grid-column: 1 / -1;">
+        <div class="val-icon c5">🤝</div>
+        <div class="val-title">共同成长</div>
+        <div class="val-desc">双向赋能，与伙伴共赴远途</div>
+      </div>
+    </div>
+
+    <!-- 返回 -->
+    <div class="footer-link">
+      <a href="index.html">← 返回来访指引首页</a>
+    </div>
+
   </div>
 
 </div>

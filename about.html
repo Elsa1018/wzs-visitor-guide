@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>公司简介 - 微智盛科技</title>
+<style>
+  :root {
+    --primary: #1B6DC8;
+    --primary-light: #E8F1FB;
+    --primary-dark: #1459A3;
+    --primary-deeper: #0F4478;
+    --text-dark: #1A1F24;
+    --text-medium: #545B62;
+    --text-light: #8E959D;
+    --bg: #F5F6F8;
+    --card: #FFFFFF;
+    --border: #EAECEF;
+    --shadow: 0 1px 8px rgba(0,0,0,0.05);
+    --radius: 14px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 480px; margin: 0 auto; padding-bottom: 40px; }
+
+  /* ========== SUB-PAGE HEADER ========== */
+  .sub-header {
+    background: linear-gradient(165deg, #0D3B66 0%, #135696 35%, #1B6DC8 70%, #11467A 100%);
+    padding: 20px 20px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sub-header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -30px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    opacity: 0.04;
+    border: 2px solid #fff;
+  }
+
+  .sub-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: -20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    opacity: 0.04;
+    border: 2px solid #fff;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .back-btn:active { opacity: 0.7; }
+
+  .sub-header-icon {
+    font-size: 34px;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+
+  .sub-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sub-header .sub-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ========== CONTENT ========== */
+  .content-section {
+    padding: 24px 20px 0;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+  }
+
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: var(--text-medium);
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* ========== HIGHLIGHT CARD ========== */
+  .highlight-card {
+    background: linear-gradient(135deg, #EDF4FC 0%, #DCE8F6 100%);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+    text-align: center;
+    border: 1px solid rgba(27,109,200,0.1);
+  }
+
+  .highlight-card .hl-val {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .highlight-card .hl-label {
+    font-size: 13px;
+    color: #5A7DA0;
+    font-weight: 500;
+  }
+
+  /* ========== VALUE LIST ========== */
+  .value-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .value-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-medium);
+  }
+
+  .value-list li:last-child { border-bottom: none; }
+
+  .value-list .v-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .text-bold { font-weight: 600; }
+  .text-primary { color: var(--primary); }
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ==================== HEADER ==================== -->
+  <div class="sub-header">
+    <a class="back-btn" href="index.html">← 返回首页</a>
+    <span class="sub-header-icon">🏢</span>
+    <h1>公司简介</h1>
+    <p class="sub-subtitle">微智盛科技 · 助力中国小家电品牌出海</p>
+  </div>
+
+  <!-- ==================== 基本概况 ==================== -->
+  <div class="content-section">
+    <div class="card">
+      <h3>📌 企业概况</h3>
+      <p>
+        <span class="text-bold">微智盛科技</span>（WZS / Teendow）是一家位于中国深圳的跨境电商企业，规模 <span class="text-primary text-bold">180-200 人</span>，专注小家电出海赛道。
+      </p>
+      <p class="mt-8">
+        公司扎根粤港澳大湾区核心地带，办公地点位于<span class="text-bold">深圳市龙岗区坂田街道雅宝路8号星河双子塔·东塔34楼整层</span>，坐拥一线城市景观。
+      </p>
+    </div>
+
+    <!-- ==================== 使命愿景 ==================== -->
+    <div class="highlight-card">
+      <div class="hl-val">助力中国小家电品牌出海</div>
+      <div class="hl-label">企业使命</div>
+    </div>
+
+    <div class="highlight-card" style="background:linear-gradient(135deg,#F0F3F7 0%,#E5EAEF 100%);border-color:rgba(15,68,120,0.08);">
+      <div class="hl-val" style="color:var(--primary-deeper);">成为每个家庭的智慧伙伴</div>
+      <div class="hl-label" style="color:#6B7B8D;">企业愿景</div>
+    </div>
+
+    <!-- ==================== 资质荣誉 ==================== -->
+    <div class="card">
+      <h3>🏆 资质荣誉</h3>
+      <p>微智盛科技已获评 <span class="text-bold text-primary">国家高新技术企业</span>，在跨境电商与小家电出海领域持续深耕，凭借技术创新与供应链优势，将优质国货小家电带到全球消费者手中。</p>
+    </div>
+
+    <!-- ==================== 价值观 ==================== -->
+    <div class="card">
+      <h3>💎 核心价值观</h3>
+      <ul class="value-list">
+        <li>
+          <span class="v-dot"></span>
+          <span><span class="text-bold">客户导向</span> — 以客户需求为中心，持续创造价值</span>
+        </li>
+        <li>
+          <span class="v-dot"></span>
+          <span><span class="text-bold">求真理</span> — 基于数据与事实，追求真实洞察</span>
+        </li>
+        <li>
+          <span class="v-dot"></span>
+          <span><span class="text-bold">务实创新</span> — 脚踏实地，敢于突破边界</span>
+        </li>
+        <li>
+          <span class="v-dot"></span>
+          <span><span class="text-bold">开放包容</span> — 多元视角，协作共赢</span>
+        </li>
+        <li>
+          <span class="v-dot"></span>
+          <span><span class="text-bold">共同成长</span> — 与员工、伙伴、客户携手前行</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ==================== 发展历程 ==================== -->
+    <div class="card">
+      <h3>📈 发展历程</h3>
+      <p>
+        微智盛科技自成立以来，深耕跨境电商小家电领域，依托中国制造业的供应链优势与品牌运营能力，在亚马逊等全球电商平台上持续打造自有品牌矩阵，将高品质的中国小家电产品带入全球千万家庭。
+      </p>
+      <p class="mt-8">
+        未来，公司将继续以"助力中国小家电品牌出海"为使命，拓展更多国际市场，用科技与品质定义智慧家居生活。
+      </p>
+    </div>
+
+    <div style="text-align:center; margin-top:24px;">
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--primary);text-decoration:none;font-size:14px;font-weight:500;">
+        ← 返回来访指引首页
+      </a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

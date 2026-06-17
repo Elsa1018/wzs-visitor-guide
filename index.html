@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>来访指引 - 微智盛科技</title>
+<style>
+  :root {
+    --primary: #1B6DC8;
+    --primary-light: #E8F1FB;
+    --primary-dark: #1459A3;
+    --primary-deeper: #0F4478;
+    --text-dark: #1A1F24;
+    --text-medium: #545B62;
+    --text-light: #8E959D;
+    --bg: #F5F6F8;
+    --card: #FFFFFF;
+    --border: #EAECEF;
+    --shadow: 0 1px 8px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.07);
+    --radius: 14px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+
+  /* ========== HERO — 商务正式 ========== */
+  .hero {
+    background: linear-gradient(165deg, #0D3B66 0%, #135696 35%, #1B6DC8 70%, #11467A 100%);
+    padding: 48px 28px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Subtle geometric lines */
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+  }
+  .hero-lines::before {
+    content: '';
+    position: absolute;
+    top: -20%; left: -10%;
+    width: 60%; height: 140%;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+  .hero-lines::after {
+    content: '';
+    position: absolute;
+    top: 10%; right: -5%;
+    width: 40%; height: 80%;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+
+  .hero-logo-group {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+
+  .hero-logo {
+    width: 90px;
+    height: auto;
+    filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .hero .subtitle-main {
+    font-size: 14px;
+    color: rgba(255,255,255,0.82);
+    position: relative;
+    z-index: 1;
+    line-height: 1.7;
+    margin-top: 12px;
+    max-width: 300px;
+  }
+
+  .hero-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+  .hero-wave svg { display: block; width: 100%; }
+
+  /* ========== SECTION ========== */
+  .section {
+    padding: 0 20px;
+    margin-top: 28px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+  }
+
+  .section-icon {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+  }
+
+  .icon-primary { background: var(--primary-light); color: var(--primary); }
+  .icon-dark { background: #EFF2F5; color: var(--primary-deeper); }
+
+  /* ========== CARD ========== */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+  }
+
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: var(--text-medium);
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* ========== APPOINTMENT CARD 来访预约 ========== */
+  .appointment-card {
+    background: linear-gradient(135deg, #EDF4FC 0%, #DCE8F6 100%);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    box-shadow: var(--shadow);
+    margin: -16px 20px 0;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(27,109,200,0.12);
+  }
+
+  .appointment-card .ap-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .appointment-card .ap-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+
+  .appointment-card .ap-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 2px;
+  }
+
+  .appointment-card .ap-desc {
+    font-size: 13px;
+    color: #5A7DA0;
+    line-height: 1.5;
+  }
+
+  .appointment-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .appointment-btn:active {
+    background: var(--primary-dark);
+    transform: scale(0.98);
+  }
+
+  .appointment-btn .btn-arrow {
+    font-size: 16px;
+    transition: transform 0.2s;
+  }
+  .appointment-btn:active .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  /* ========== COMPANY CARD ========== */
+  .company-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin: 20px 20px 0;
+    text-align: center;
+  }
+
+  .company-card .logo-sm {
+    width: 40px;
+    height: auto;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.08));
+  }
+
+  .company-card .company-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .company-card .address {
+    font-size: 13px;
+    color: var(--text-medium);
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  /* ========== TRAVEL OPTION CARDS ========== */
+  .travel-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 0 20px;
+  }
+
+  .travel-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 28px 16px 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .travel-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 20%; right: 20%;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+  }
+  .travel-card.subway::before { background: var(--primary); }
+  .travel-card.drive::before { background: var(--primary-deeper); }
+
+  .travel-card:active {
+    transform: scale(0.97);
+    box-shadow: var(--shadow-md);
+  }
+
+  .travel-card .travel-icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .travel-card .travel-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .travel-card .travel-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .travel-card .travel-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 600;
+    margin-top: 14px;
+  }
+
+  /* ========== ARRIVAL FLOW ========== */
+  .flow-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .flow-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    position: relative;
+  }
+
+  .flow-item:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .flow-num {
+    width: 34px; height: 34px; min-width: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700;
+    background: var(--primary);
+    color: #fff;
+  }
+
+  .flow-info h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+  }
+
+  .flow-info p {
+    font-size: 13px;
+    color: var(--text-medium);
+    margin: 0;
+  }
+
+  /* ========== ABOUT LINK CARD ========== */
+  .about-link-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+  }
+
+  .about-link-card:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-md);
+  }
+
+  .about-link-card .about-icon {
+    width: 48px; height: 48px; min-width: 48px;
+    border-radius: 12px;
+    background: var(--primary-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    color: var(--primary);
+  }
+
+  .about-link-card .about-info {
+    flex: 1; min-width: 0;
+  }
+
+  .about-link-card .about-info h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .about-link-card .about-info p {
+    font-size: 12px;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .about-link-card .about-arrow {
+    font-size: 18px;
+    color: var(--text-light);
+  }
+
+  /* ========== CONTACT ========== */
+  .contact-row {
+    display: flex;
+    gap: 12px;
+  }
+
+  .contact-item {
+    flex: 1;
+    min-width: 0;
+    background: var(--card);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  .contact-item .contact-label {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 6px;
+  }
+
+  .contact-item .contact-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  /* ========== TIP ========== */
+  .tip-inline {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 14px;
+    background: #F8FAFB;
+    border-radius: var(--radius-sm);
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-medium);
+    line-height: 1.6;
+  }
+
+  .tip-inline .tip-dot {
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    text-align: center;
+    padding: 36px 20px 20px;
+    color: var(--text-light);
+    font-size: 12px;
+  }
+
+  .footer .logo-footer {
+    width: 80px;
+    height: auto;
+    margin-bottom: 12px;
+    opacity: 0.6;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.06));
+  }
+
+  /* ========== UTILITIES ========== */
+  .text-bold { font-weight: 600; }
+  .text-primary { color: var(--primary); }
+  .mt-12 { margin-top: 12px; }
+  .mt-16 { margin-top: 16px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ==================== HERO ==================== -->
+  <div class="hero">
+    <div class="hero-lines"></div>
+
+    <div class="hero-logo-group">
+      <img class="hero-logo" src="assets/logo-transparent.png" alt="WZS" onerror="this.style.display='none'">
+    </div>
+
+    <h1>来访指引</h1>
+    <p class="subtitle-main">
+      为您的到访提供清晰路线与实用信息，期待与您相见。
+    </p>
+
+    <div class="hero-wave">
+      <svg viewBox="0 0 480 40" preserveAspectRatio="none">
+        <path d="M0,20 C120,40 240,0 480,20 L480,40 L0,40 Z" fill="#F5F6F8"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ==================== 来访预约（最先看到） ==================== -->
+  <div class="appointment-card" id="appointment">
+    <div class="ap-header">
+      <div class="ap-icon">📋</div>
+      <div>
+        <div class="ap-title">来访预约登记</div>
+        <div class="ap-desc">为了确保您的到访体验顺畅，请提前填写来访信息，方便我们为您做好接待准备。</div>
+      </div>
+    </div>
+    <a class="appointment-btn" href="https://c69xcfymal.feishu.cn/share/base/form/shrcnb1G4gCF2AqKo4Nuuwxh3hb" target="_blank" rel="noopener">
+      填写来访预约<span class="btn-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- ==================== 公司信息 ==================== -->
+  <div class="company-card">
+    <img class="logo-sm" src="assets/logo-transparent.png" alt="WZS" onerror="this.style.display='none'">
+    <div class="company-name">微智盛科技</div>
+    <div class="address">
+      深圳市龙岗区坂田街道雅宝路8号<br>
+      星河双子塔·东塔 34楼整层
+    </div>
+  </div>
+
+  <!-- ==================== 出行方式选择 ==================== -->
+  <div class="section" id="travel">
+    <div class="section-title">
+      <div class="section-icon icon-primary">📍</div>
+      出行方式
+    </div>
+
+    <div class="travel-options">
+      <a class="travel-card subway" href="subway.html">
+        <span class="travel-icon">🚇</span>
+        <div class="travel-title">地铁出行</div>
+        <div class="travel-desc">10号线雅宝站 B出口<br>步行约 3-5 分钟</div>
+        <span class="travel-arrow">查看详情 →</span>
+      </a>
+
+      <a class="travel-card drive" href="driving.html">
+        <span class="travel-icon">🚗</span>
+        <div class="travel-title">自驾出行</div>
+        <div class="travel-desc">双子塔停车场<br>首小时免费</div>
+        <span class="travel-arrow">查看详情 →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== 到达后流程 ==================== -->
+  <div class="section" id="flow">
+    <div class="section-title">
+      <div class="section-icon icon-dark">➤</div>
+      到达 34 楼后
+    </div>
+
+    <div class="card">
+      <div class="flow-list">
+        <div class="flow-item">
+          <div class="flow-num">1</div>
+          <div class="flow-info">
+            <h4>前台登记</h4>
+            <p>出电梯后前往前台，向<span class="text-bold">行政同事</span>说明来访缘由及洽谈人</p>
+          </div>
+        </div>
+
+        <div class="flow-item">
+          <div class="flow-num">2</div>
+          <div class="flow-info">
+            <h4>等候接引</h4>
+            <p>行政同事确认信息后，将接引您至对应的洽谈间</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 公司简介入口 ==================== -->
+  <div class="section" id="about">
+    <div class="section-title">
+      <div class="section-icon icon-primary">🏢</div>
+      了解我们
+    </div>
+
+    <a class="about-link-card" href="about.html">
+      <div class="about-icon">📖</div>
+      <div class="about-info">
+        <h4>公司简介</h4>
+        <p>了解微智盛科技的企业概况、使命愿景与发展历程</p>
+      </div>
+      <span class="about-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- ==================== 联系方式 ==================== -->
+  <div class="section" id="contact">
+    <div class="section-title">
+      <div class="section-icon icon-dark">📞</div>
+      应急联系方式
+    </div>
+
+    <div class="contact-row">
+      <a class="contact-item" href="tel:0755-21033001" style="text-decoration:none;color:inherit;">
+        <div class="contact-label">前台电话</div>
+        <div class="contact-value">0755-21033001</div>
+      </a>
+
+      <div class="contact-item">
+        <div class="contact-label">洽谈人电话</div>
+        <div class="contact-value" style="font-size:13px;">请联系邀约人获取</div>
+      </div>
+    </div>
+
+    <div class="tip-inline mt-12">
+      <span class="tip-dot">💡</span>
+      <span>如在前台或路途中遇到问题，可直接拨打前台电话或联系与您洽谈的对接人。</span>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <div class="footer">
+    <img class="logo-footer" src="assets/logo-transparent.png" alt="WZS" onerror="this.style.display='none'">
+    <p>微智盛科技</p>
+    <p>助力中国小家电品牌出海</p>
+    <p class="mt-12" style="opacity:0.45;">期待您的到访</p>
+  </div>
+
+</div>
+
+<!-- ==================== LIGHTBOX ==================== -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()" style="position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;padding:20px;">
+  <button class="lightbox-close" onclick="closeLightbox()" style="position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;">✕</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:100%;max-height:90vh;object-fit:contain;border-radius:8px;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  var lb = document.getElementById('lightbox');
+  lb.style.opacity = '1';
+  lb.style.pointerEvents = 'auto';
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  var lb = document.getElementById('lightbox');
+  lb.style.opacity = '0';
+  lb.style.pointerEvents = 'none';
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>

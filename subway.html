@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>地铁出行指引 - 微智盛科技</title>
+<style>
+  :root {
+    --primary: #1B6DC8;
+    --primary-light: #E8F1FB;
+    --primary-dark: #1459A3;
+    --primary-deeper: #0F4478;
+    --accent: #FF7B42;
+    --accent-light: #FFF3ED;
+    --success: #27AE60;
+    --success-light: #EDFBF3;
+    --text-dark: #1A1F24;
+    --text-medium: #545B62;
+    --text-light: #8E959D;
+    --bg: #F5F6F8;
+    --card: #FFFFFF;
+    --border: #EAECEF;
+    --shadow: 0 1px 8px rgba(0,0,0,0.05);
+    --radius: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 480px; margin: 0 auto; padding-bottom: 40px; }
+
+  /* ========== SUB-PAGE HEADER — 商务风 ========== */
+  .sub-header {
+    background: linear-gradient(165deg, #0D3B66 0%, #135696 35%, #1B6DC8 70%, #11467A 100%);
+    padding: 20px 20px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sub-header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -30px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    opacity: 0.04;
+    border: 2px solid #fff;
+  }
+
+  .sub-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: -20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    opacity: 0.04;
+    border: 2px solid #fff;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .back-btn:active { opacity: 0.7; }
+
+  .sub-header-icon {
+    font-size: 34px;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+
+  .sub-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sub-header .sub-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ========== CONTENT ========== */
+  .content-section {
+    padding: 24px 20px 0;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+  }
+
+  .section-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+    background: var(--primary-light); color: var(--primary);
+  }
+
+  /* ========== ROUTE ========== */
+  .route-step {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 16px 0; position: relative;
+  }
+
+  .route-step:not(:last-child)::after {
+    content: '';
+    position: absolute; left: 15px; top: 44px; bottom: 0;
+    width: 2px; background: var(--primary-light); border-radius: 1px;
+  }
+
+  .route-dot {
+    width: 32px; height: 32px; min-width: 32px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; color: #fff; z-index: 1;
+  }
+
+  .route-dot.station { background: var(--primary); }
+  .route-dot.exit { background: var(--accent); }
+  .route-dot.walk { background: var(--success); }
+  .route-dot.arrive { background: var(--primary-deeper); }
+
+  .route-content h4 { font-size: 15px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+  .route-content p { font-size: 13px; color: var(--text-medium); line-height: 1.6; margin: 0; }
+
+  /* ========== STEP IMAGE ========== */
+  .step-image {
+    margin: 4px 0 12px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    border: 1px dashed var(--border);
+    min-height: 64px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-image:active { transform: scale(0.985); }
+  .step-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: none;
+    border-radius: var(--radius);
+  }
+  .step-image.has-image {
+    border: none;
+    box-shadow: var(--shadow);
+    background: transparent;
+    min-height: auto;
+  }
+  .step-image.has-image img { display: block; border-radius: var(--radius); }
+  .step-image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 20px;
+    color: var(--text-light);
+    font-size: 13px;
+  }
+  .step-image-placeholder .step-image-icon { font-size: 24px; opacity: 0.6; }
+  .step-image.has-image .step-image-placeholder { display: none; }
+
+  /* ========== DUAL IMAGE ========== */
+  .step-image-row {
+    margin: 4px 0 12px;
+    display: flex; gap: 8px;
+  }
+  .step-image-row .step-img-half {
+    flex: 1; min-width: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: var(--shadow);
+  }
+  .step-image-row .step-img-half:active { transform: scale(0.97); }
+  .step-image-row .step-img-half img {
+    width: 100%; height: 160px;
+    object-fit: cover; display: block;
+    border-radius: var(--radius);
+  }
+  .step-image-desc {
+    margin: -4px 0 12px;
+    padding: 10px 14px;
+    background: var(--primary-light);
+    border-radius: 10px;
+    font-size: 12px;
+    color: var(--primary);
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  /* ========== TIP ========== */
+  .tip-card {
+    background: #F0F3F7;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .tip-text { font-size: 13px; color: var(--text-medium); line-height: 1.6; }
+  .tip-text span { font-weight: 600; color: var(--primary); }
+
+  .text-bold { font-weight: 600; }
+  .text-primary { color: var(--primary); }
+  .text-accent { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ==================== HEADER ==================== -->
+  <div class="sub-header">
+    <a class="back-btn" href="index.html">← 返回首页</a>
+    <span class="sub-header-icon">🚇</span>
+    <h1>地铁出行指引</h1>
+    <p class="sub-subtitle">10号线雅宝站 B出口 → 星河双子塔·东塔 34 楼</p>
+  </div>
+
+  <!-- ==================== 路线步骤 ==================== -->
+  <div class="content-section">
+    <div class="section-title">
+      <div class="section-icon">📍</div>
+      步行路线指引
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text">
+        <span>小提示：</span>如果找不到路，可直接拨打前台电话 <span>0755-21033001</span>，或联系您的洽谈对接人，我们会为您指引方向。
+      </div>
+    </div>
+
+    <!-- 步骤1 -->
+    <div class="route-step">
+      <div class="route-dot station">1</div>
+      <div class="route-content">
+        <h4>乘坐地铁10号线至雅宝站</h4>
+        <p>搭乘 <span class="text-bold text-primary">地铁10号线</span> 至 <span class="text-bold text-primary">雅宝站</span></p>
+      </div>
+    </div>
+
+    <!-- 步骤2 -->
+    <div class="route-step">
+      <div class="route-dot exit">B</div>
+      <div class="route-content">
+        <h4>从 B 出口出站</h4>
+        <p>出站后选择 <span class="text-bold text-accent">B 出口</span>，出站即进入星河双子塔区域</p>
+      </div>
+    </div>
+    <div class="step-image has-image" onclick="openLightbox('assets/step-2-exit.jpg')">
+      <img src="assets/step-2-exit.jpg" alt="B出口步行路线"
+        onerror="this.parentElement.classList.remove('has-image')"
+        onload="this.parentElement.classList.add('has-image')">
+      <div class="step-image-placeholder">
+        <span class="step-image-icon">📷</span>
+        <span>点击查看图片详情</span>
+      </div>
+    </div>
+
+    <!-- 步骤3 -->
+    <div class="route-step">
+      <div class="route-dot walk">→</div>
+      <div class="route-content">
+        <h4>步行前往东塔</h4>
+        <p>出站后沿路直行至红绿灯处，途经马路继续直行，步行约 <span class="text-bold">3-5 分钟</span> 即可到达 <span class="text-bold text-primary">东塔</span> 入口</p>
+      </div>
+    </div>
+    <div class="step-image-row">
+      <div class="step-img-half" onclick="openLightbox('assets/step-3a-exit.jpg')">
+        <img src="assets/step-3a-exit.jpg" alt="B出口出来后沿路直行至红绿灯">
+      </div>
+      <div class="step-img-half" onclick="openLightbox('assets/step-3b-road.jpg')">
+        <img src="assets/step-3b-road.jpg" alt="途经马路继续直行">
+      </div>
+    </div>
+    <div class="step-image-desc">
+      沿着眼前道路直行至红绿灯处（请看左图中红箭头方向），右图为途经的马路，请继续直行
+    </div>
+    <div class="step-image has-image" onclick="openLightbox('assets/step-3c-turn.jpg')">
+      <img src="assets/step-3c-turn.jpg" alt="步行至此右转直行"
+        onerror="this.parentElement.classList.remove('has-image')"
+        onload="this.parentElement.classList.add('has-image')">
+      <div class="step-image-placeholder">
+        <span class="step-image-icon">📷</span>
+        <span>点击查看图片详情</span>
+      </div>
+    </div>
+    <div class="step-image-desc">
+      步行至此（不要再过马路），请右转直行（请看图中红箭头方向）
+    </div>
+    <div class="step-image-row">
+      <div class="step-img-half" onclick="openLightbox('assets/step-3d-tower1.jpg')">
+        <img src="assets/step-3d-tower1.jpg" alt="双子塔外观">
+      </div>
+      <div class="step-img-half" onclick="openLightbox('assets/step-3e-tower2.jpg')">
+        <img src="assets/step-3e-tower2.jpg" alt="东塔正门">
+      </div>
+    </div>
+    <div class="step-image-desc">
+      双子塔共2栋楼，我司所在为后方的东塔（请看图中红箭头方向，请走向正门）
+    </div>
+
+    <!-- 步骤4 -->
+    <div class="route-step">
+      <div class="route-dot arrive">✓</div>
+      <div class="route-content">
+        <h4>登记并搭乘电梯</h4>
+        <p>进入后请找 <span class="text-bold">左手侧服务台</span> 领取纸质通行证，说明是 <span class="text-bold text-primary">34楼微智盛科技</span> 来访即可，随后搭乘电梯直达</p>
+      </div>
+    </div>
+    <div class="step-image has-image" onclick="openLightbox('assets/step-4-arrive.jpg')">
+      <img src="assets/step-4-arrive.jpg" alt="东塔大厅服务台领取通行证"
+        onerror="this.parentElement.classList.remove('has-image')"
+        onload="this.parentElement.classList.add('has-image')">
+      <div class="step-image-placeholder">
+        <span class="step-image-icon">📷</span>
+        <span>点击查看图片详情</span>
+      </div>
+    </div>
+    <div class="step-image-desc">
+      进入东塔后，前往左手侧服务台领取纸质通行证
+    </div>
+    <div class="step-image has-image" onclick="openLightbox('assets/step-4b-gate.jpg')">
+      <img src="assets/step-4b-gate.jpg" alt="前往闸口入闸等待电梯"
+        onerror="this.parentElement.classList.remove('has-image')"
+        onload="this.parentElement.classList.add('has-image')">
+      <div class="step-image-placeholder">
+        <span class="step-image-icon">📷</span>
+        <span>点击查看图片详情</span>
+      </div>
+    </div>
+    <div class="step-image-desc">
+      前往对应的闸口入闸等待电梯（请看图中红箭头方向）
+    </div>
+    <div class="step-image has-image" onclick="openLightbox('assets/step-4c-scan.jpg')">
+      <img src="assets/step-4c-scan.jpg" alt="纸质通行证扫描处"
+        onerror="this.parentElement.classList.remove('has-image')"
+        onload="this.parentElement.classList.add('has-image')">
+      <div class="step-image-placeholder">
+        <span class="step-image-icon">📷</span>
+        <span>点击查看图片详情</span>
+      </div>
+    </div>
+    <div class="step-image-desc">
+      ⚠️ 此图为长图，请<b>点击放大查看</b>——将纸质通行证放至红框处扫描，电梯号码会在下方黄框中显示，务必记住
+    </div>
+    <div class="step-image has-image" onclick="openLightbox('assets/step-4d-elevator.jpg')">
+      <img src="assets/step-4d-elevator.jpg" alt="查找电梯右上角数字"
+        onerror="this.parentElement.classList.remove('has-image')"
+        onload="this.parentElement.classList.add('has-image')">
+      <div class="step-image-placeholder">
+        <span class="step-image-icon">📷</span>
+        <span>点击查看图片详情</span>
+      </div>
+    </div>
+    <div class="step-image-desc">
+      根据显示的电梯号，查找电梯右上角数字，并在对应电梯等待即可
+    </div>
+
+    <!-- 步骤5 -->
+    <div class="route-step">
+      <div class="route-dot arrive">✓</div>
+      <div class="route-content">
+        <h4>到达微智盛并登记</h4>
+        <p>抵达 <span class="text-bold text-primary">34楼微智盛科技</span> 后，找前台说明来访缘由，行政同事将接引您至洽谈间</p>
+      </div>
+    </div>
+    <div class="step-image has-image" onclick="openLightbox('assets/step-5-arrive.jpg')">
+      <img src="assets/step-5-arrive.jpg" alt="到达微智盛并登记"
+        onerror="this.parentElement.classList.remove('has-image')"
+        onload="this.parentElement.classList.add('has-image')">
+      <div class="step-image-placeholder">
+        <span class="step-image-icon">📷</span>
+        <span>点击查看图片详情</span>
+      </div>
+    </div>
+    <div class="step-image-desc">
+      到达微智盛后，找前台说明来访缘由，行政同事将接引您至洽谈间
+    </div>
+
+    <div style="text-align:center; margin-top:24px;">
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--primary);text-decoration:none;font-size:14px;font-weight:500;">
+        ← 返回来访指引首页
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== LIGHTBOX ==================== -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()" style="position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;padding:20px;">
+  <button class="lightbox-close" onclick="closeLightbox()" style="position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;">✕</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:100%;max-height:90vh;object-fit:contain;border-radius:8px;">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  var lb = document.getElementById('lightbox');
+  lb.style.opacity = '1';
+  lb.style.pointerEvents = 'auto';
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  var lb = document.getElementById('lightbox');
+  lb.style.opacity = '0';
+  lb.style.pointerEvents = 'none';
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>

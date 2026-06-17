@@ -297,45 +297,31 @@
   }
   .value-item:active { transform: scale(0.98); }
 
-  .value-item .val-icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
+  .value-item .val-num {
+    width: 36px; height: 36px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     flex-shrink: 0;
+    margin-top: 2px;
   }
-  .val-icon.c1 { background: #EBF2FC; color: var(--primary); }
-  .val-icon.c2 { background: #E8F5F0; color: #2E8B57; }
-  .val-icon.c3 { background: #FFF3E8; color: #E67E22; }
-  .val-icon.c4 { background: #F3E8FF; color: #7B3FBE; }
-  .val-icon.c5 { background: #E8F2FF; color: #3B7DD8; }
+  .val-num.c1 { background: #EBF2FC; color: var(--primary); }
+  .val-num.c2 { background: #E8F5F0; color: #2E8B57; }
+  .val-num.c3 { background: #FFF3E8; color: #E67E22; }
+  .val-num.c4 { background: #F3E8FF; color: #7B3FBE; }
+  .val-num.c5 { background: #E8F2FF; color: #3B7DD8; }
 
-  .value-item .val-body {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .value-item .val-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 2px;
-  }
-  .value-item .val-sub {
+  .value-item .val-text {
     font-size: 13px;
-    font-weight: 500;
-    color: var(--primary);
-    margin-bottom: 6px;
-    line-height: 1.4;
-  }
-  .value-item .val-desc {
-    font-size: 12px;
     color: var(--text-medium);
-    line-height: 1.65;
+    line-height: 1.8;
   }
+
+  .val-text:first-line,
+  .val-text ::first-line { font-weight: 700; color: var(--text-dark); font-size: 15px; }
 
   .text-bold { font-weight: 600; }
   .text-primary { color: var(--primary); }
@@ -502,47 +488,37 @@
 
     <div class="value-grid">
       <div class="value-item">
-        <div class="val-icon c1">1</div>
+        <span class="val-num c1">1</span>
         <div class="val-body">
-          <div class="val-title">客户导向</div>
-          <div class="val-sub">以用户为中心，以体验为标尺</div>
-          <div class="val-desc">始终洞察真实需求，直面使用痛点，用产品与服务传递价值，做让用户放心的智慧伙伴。</div>
+          <div class="val-text">客户导向<br>以用户为中心，以体验为标尺<br>始终洞察真实需求，直面使用痛点，用产品与服务传递价值，做让用户放心的智慧伙伴。</div>
         </div>
       </div>
 
       <div class="value-item">
-        <div class="val-icon c2">2</div>
+        <span class="val-num c2">2</span>
         <div class="val-body">
-          <div class="val-title">求真理</div>
-          <div class="val-sub">直面问题本质，坚持客观理性</div>
-          <div class="val-desc">不盲从、不臆断，用数据与事实说话，鼓励坦诚表达，在真相之上做正确的决策。</div>
+          <div class="val-text">求真理<br>直面问题本质，坚持客观理性<br>不盲从、不臆断，用数据与事实说话，鼓励坦诚表达，在真相之上做正确的决策。</div>
         </div>
       </div>
 
       <div class="value-item">
-        <div class="val-icon c3">3</div>
+        <span class="val-num c3">3</span>
         <div class="val-body">
-          <div class="val-title">务实创新</div>
-          <div class="val-sub">以行动破局，以迭代驱动增长</div>
-          <div class="val-desc">拒绝空谈、聚焦结果，保持自驱与高效；持续探索技术与模式突破，让创新落地为用户价值。</div>
+          <div class="val-text">务实创新<br>以行动破局，以迭代驱动增长<br>拒绝空谈、聚焦结果，保持自驱与高效；持续探索技术与模式突破，让创新落地为用户价值。</div>
         </div>
       </div>
 
       <div class="value-item">
-        <div class="val-icon c4">4</div>
+        <span class="val-num c4">4</span>
         <div class="val-body">
-          <div class="val-title">开放包容</div>
-          <div class="val-sub">保持空杯心态，拥抱多元与差异</div>
-          <div class="val-desc">尊重不同观点，鼓励碰撞与协作，以开放姿态吸纳新思维、新方法，共建多元包容的团队生态。</div>
+          <div class="val-text">开放包容<br>保持空杯心态，拥抱多元与差异<br>尊重不同观点，鼓励碰撞与协作，以开放姿态吸纳新思维、新方法，共建多元包容的团队生态。</div>
         </div>
       </div>
 
       <div class="value-item">
-        <div class="val-icon c5">5</div>
+        <span class="val-num c5">5</span>
         <div class="val-body">
-          <div class="val-title">共同成长</div>
-          <div class="val-sub">同心协力，与伙伴双向成就</div>
-          <div class="val-desc">以人为本、彼此赋能，激发团队潜能，在协同中沉淀能力，与用户、伙伴、团队一起迈向更远的目标。</div>
+          <div class="val-text">共同成长<br>同心协力，与伙伴双向成就<br>以人为本、彼此赋能，激发团队潜能，在协同中沉淀能力，与用户、伙伴、团队一起迈向更远的目标。</div>
         </div>
       </div>
     </div>

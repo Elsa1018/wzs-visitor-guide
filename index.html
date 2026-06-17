@@ -482,6 +482,33 @@
     margin-top: 1px;
   }
 
+  /* ========== ABOUT DETAIL BUTTON ========== */
+  .about-detail-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 10px 22px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .about-detail-btn:active {
+    background: var(--primary-dark);
+    transform: scale(0.97);
+  }
+  .about-detail-btn span {
+    font-size: 16px;
+    transition: transform 0.2s;
+  }
+  .about-detail-btn:active span {
+    transform: translateX(3px);
+  }
+
   /* ========== FOOTER ========== */
   .footer {
     text-align: center;
@@ -580,7 +607,7 @@
           <div class="flow-num">1</div>
           <div class="flow-info">
             <h4>前台登记</h4>
-            <p>出电梯后前往前台，向<span class="text-bold">行政同事</span>说明来访缘由及洽谈人</p>
+            <p>出电梯后前往前台，向<span class="text-bold">前台</span>说明来访缘由及洽谈人</p>
           </div>
         </div>
 
@@ -588,7 +615,7 @@
           <div class="flow-num">2</div>
           <div class="flow-info">
             <h4>等候接引</h4>
-            <p>行政同事确认信息后，将接引您至对应的洽谈间</p>
+            <p>前台确认信息后，将接引您至对应的洽谈间</p>
           </div>
         </div>
       </div>
@@ -602,14 +629,14 @@
       了解我们
     </div>
 
-    <a class="about-link-card" href="about.html">
-      <div class="about-icon">📖</div>
-      <div class="about-info">
-        <h4>公司简介</h4>
-        <p>了解微智盛科技的企业概况、使命愿景与发展历程</p>
-      </div>
-      <span class="about-arrow">→</span>
-    </a>
+    <div class="card">
+      <p>
+        <span class="text-bold">微智盛科技</span>（<span class="text-primary text-bold">国家级高新技术企业</span>）成立于 2015 年，深耕智能小家电出海赛道，依托国内完备的供应链体系与全球化数字营销能力，持续为全球家庭提供<span class="text-bold">智慧清洁、餐厨料理、环境调控</span>三大类智能产品。
+      </p>
+      <a class="about-detail-btn" href="about.html">
+        查看详情 <span>→</span>
+      </a>
+    </div>
   </div>
 
   <!-- ==================== 联系方式 ==================== -->

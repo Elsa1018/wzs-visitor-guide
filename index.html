@@ -43,7 +43,7 @@
 
   /* ========== HERO — 商务正式 ========== */
   .hero {
-    background: linear-gradient(165deg, #0D3B66 0%, #135696 35%, #1B6DC8 70%, #11467A 100%);
+    background: url('assets/hero-bg.png') center/cover no-repeat;
     padding: 48px 28px 64px;
     text-align: center;
     position: relative;
@@ -55,12 +55,21 @@
     justify-content: center;
   }
 
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(165deg, rgba(13,59,102,0.75) 0%, rgba(19,86,150,0.65) 35%, rgba(27,109,200,0.55) 100%);
+    z-index: 0;
+  }
+
   /* Subtle geometric lines */
   .hero-lines {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.08;
+    opacity: 0.06;
+    z-index: 1;
   }
   .hero-lines::before {
     content: '';
@@ -103,12 +112,13 @@
 
   .hero .subtitle-main {
     font-size: 14px;
-    color: rgba(255,255,255,0.82);
+    color: rgba(255,255,255,0.88);
     position: relative;
     z-index: 1;
-    line-height: 1.7;
-    margin-top: 12px;
-    max-width: 300px;
+    line-height: 1.8;
+    margin-top: 16px;
+    max-width: 360px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
   }
 
   .hero-wave {
@@ -514,9 +524,9 @@
       <img class="hero-logo" src="assets/logo-transparent.png" alt="WZS" onerror="this.style.display='none'">
     </div>
 
-    <h1>来访指引</h1>
+    <h1>微智盛科技 · 来访指引</h1>
     <p class="subtitle-main">
-      为您的到访提供清晰路线与实用信息，期待与您相见。
+      欢迎您莅临微智盛科技（深圳）有限公司！<br>我们珍视每一次面对面的交流，期待与您坦诚沟通、共谋合作。为让您的到访更加顺畅、高效，特备此指引，供您参考。
     </p>
 
     <div class="hero-wave">
@@ -558,17 +568,17 @@
     </div>
 
     <div class="travel-options">
-      <a class="travel-card subway" href="subway.html">
-        <span class="travel-icon">🚇</span>
-        <div class="travel-title">地铁出行</div>
-        <div class="travel-desc">10号线雅宝站 B出口<br>步行约 3-5 分钟</div>
-        <span class="travel-arrow">查看详情 →</span>
-      </a>
-
       <a class="travel-card drive" href="driving.html">
         <span class="travel-icon">🚗</span>
         <div class="travel-title">自驾出行</div>
         <div class="travel-desc">双子塔停车场<br>首小时免费</div>
+        <span class="travel-arrow">查看详情 →</span>
+      </a>
+
+      <a class="travel-card subway" href="subway.html">
+        <span class="travel-icon">🚇</span>
+        <div class="travel-title">地铁出行</div>
+        <div class="travel-desc">10号线雅宝站 B出口<br>步行约 3-5 分钟</div>
         <span class="travel-arrow">查看详情 →</span>
       </a>
     </div>

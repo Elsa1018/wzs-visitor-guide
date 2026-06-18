@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>欢迎到访微智盛科技</title>
+<link rel="preload" as="image" href="assets/hero-bg-scroll-opt.jpg" fetchpriority="high">
 <style>
   :root {
     --primary: #1B6DC8;
@@ -41,10 +42,9 @@
     padding-bottom: 40px;
   }
 
-  /* ========== HERO — 商务正式 ========== */
+  /* ========== HERO — 全景滚动背景 ========== */
   .hero {
     background: linear-gradient(165deg, #0D3B66 0%, #135696 35%, #1B6DC8 70%, #11467A 100%);
-    padding: 48px 28px 64px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -55,41 +55,48 @@
     justify-content: center;
   }
 
-  /* Subtle geometric lines */
-  .hero-lines {
+  /* 全景滚动背景轨道 */
+  .hero-bg-track {
     position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.06;
-    z-index: 1;
-  }
-  .hero-lines::before {
-    content: '';
-    position: absolute;
-    top: -20%; left: -10%;
-    width: 60%; height: 140%;
-    border: 2px solid #fff;
-    border-radius: 50%;
-  }
-  .hero-lines::after {
-    content: '';
-    position: absolute;
-    top: 10%; right: -5%;
-    width: 40%; height: 80%;
-    border: 2px solid #fff;
-    border-radius: 50%;
+    top: 0; left: 0;
+    height: 100%;
+    display: flex;
+    will-change: transform;
+    animation: marqueeScroll 60s linear infinite;
   }
 
-  .hero-logo-group {
-    position: relative;
+  .hero-bg-img {
+    height: 100%;
+    width: auto;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  /* 初始居中 Hello → 向右无限滚动 (图片宽 2735px，偏移让 Hello 初始居中) */
+  @keyframes marqueeScroll {
+    from { transform: translateX(-1150px); }
+    to   { transform: translateX(-3885px); }
+  }
+
+  /* 半透明蓝色蒙层，确保文字清晰可读 */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(165deg, rgba(13,59,102,0.5) 0%, rgba(27,109,200,0.35) 100%);
     z-index: 1;
-    margin-bottom: 20px;
+    pointer-events: none;
+  }
+
+  /* 文字内容置于蒙层之上 */
+  .hero-content {
+    position: relative;
+    z-index: 2;
   }
 
   .hero-logo {
     width: 90px;
     height: auto;
-    filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
   }
 
   .hero h1 {
@@ -105,8 +112,6 @@
   .hero .subtitle-main {
     font-size: 14px;
     color: rgba(255,255,255,0.88);
-    position: relative;
-    z-index: 1;
     line-height: 1.8;
     margin-top: 16px;
     max-width: 360px;
@@ -524,16 +529,21 @@
 
   <!-- ==================== HERO ==================== -->
   <div class="hero">
-    <div class="hero-lines"></div>
-
-    <div class="hero-logo-group">
-      <img class="hero-logo" src="assets/logo-transparent.png" alt="WZS" onerror="this.style.display='none'">
+    <div class="hero-bg-track">
+      <img class="hero-bg-img" src="assets/hero-bg-scroll-opt.jpg" alt="" loading="eager">
+      <img class="hero-bg-img" src="assets/hero-bg-scroll-opt.jpg" alt="" aria-hidden="true">
     </div>
+    <div class="hero-overlay"></div>
 
-    <h1>微智盛科技欢迎您</h1>
-    <p class="subtitle-main">
-      深耕小家电出海赛道的全球化增长伙伴
-    </p>
+    <div class="hero-content">
+      <div class="hero-logo-group">
+        <img class="hero-logo" src="assets/logo-transparent.png" alt="WZS" onerror="this.style.display='none'">
+      </div>
+      <h1>微智盛科技欢迎您</h1>
+      <p class="subtitle-main">
+        深耕小家电出海赛道的全球化增长伙伴
+      </p>
+    </div>
 
     <div class="hero-wave">
       <svg viewBox="0 0 480 40" preserveAspectRatio="none">

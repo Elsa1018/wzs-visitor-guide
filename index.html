@@ -486,28 +486,15 @@
   .about-detail-btn {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     margin-top: 14px;
-    padding: 10px 22px;
-    background: var(--primary);
-    color: #fff;
-    font-size: 14px;
+    color: var(--primary);
+    font-size: 13px;
     font-weight: 600;
-    border-radius: 8px;
     text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
+    transition: opacity 0.15s;
   }
-  .about-detail-btn:active {
-    background: var(--primary-dark);
-    transform: scale(0.97);
-  }
-  .about-detail-btn span {
-    font-size: 16px;
-    transition: transform 0.2s;
-  }
-  .about-detail-btn:active span {
-    transform: translateX(3px);
-  }
+  .about-detail-btn:active { opacity: 0.7; }
 
   /* ========== FOOTER ========== */
   .footer {
@@ -634,7 +621,7 @@
         <span class="text-bold">微智盛科技</span>（<span class="text-primary text-bold">国家级高新技术企业</span>）成立于 2015 年，深耕智能小家电出海赛道，依托国内完备的供应链体系与全球化数字营销能力，持续为全球家庭提供<span class="text-bold">智慧清洁、餐厨料理、环境调控</span>三大类智能产品。
       </p>
       <a class="about-detail-btn" href="about.html">
-        查看详情 <span>→</span>
+        查看详情 →
       </a>
     </div>
   </div>
